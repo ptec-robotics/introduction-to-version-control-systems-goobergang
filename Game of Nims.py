@@ -1,3 +1,4 @@
+
 name = input ("what is your name matty ")
 UrserInput=""
 print("Welcome to the sea matty")
@@ -9,12 +10,15 @@ choice= input("Do you Fight the shark?")
 if choice == "Yes":
         input("You and your first mate battled the shark " +name)
 elif choice == "No":
-        input("The shark swam up to you and use its mighty jaws and ate you and the ship in one bite ")
+        input("The shark swam up to you and use its mighty jaws to ate you and the ship in one bite ")
         print("Game Over")
         quit()
         choice_is_valid = True
 else:
-        input ("what did you say matty ")
+        input ("Because you took so long to think the shark swam up and ate you with one bite ")
+        print("game over")
+        quit()
+
 print("In the end you defeated the shark but you lost your first mate to the foul of the beast")
 print("amoung your weeping you notice a shark tooth that lead to Davy Jones secret treasure")
 print("you decied to avange your first mate by going after the treasure")
@@ -29,7 +33,7 @@ choice = input("Do you agree? " + name)
 if choice == "Yes":
         input("Davy Jones: You made a wise choice lad")
         print("Davy Jones: prepared to die hehehehehe")
-        print("Ok matty here are the rules you and davy jones will take turn takeing 1, 2, or 3 coins, who ever pick a coin on the last coin loses ok matty")
+        print("Ok matty here are the rules you and davy jones will take turn takeing 1, 2, or 3 coins who ever pick a coin on the last coin wins ok matty")
 
 import random
 import os
@@ -42,47 +46,42 @@ if LEVEL not in [1, 2]:
 
 def choose_player():
     if random.randint(0, 1) == 0:
-        return "human"
+        return "human 1"
     else:
-        return "computer"
+        return "Human 2"
 
 
 def player_turn():
     global current_number
-    player_choice = input("Player, take away 1, 2, or 3 coins? ")
+    player_choice = input("Player One, take away 1, 2, or 3 coins? ")
     while player_choice not in ["1", "2", "3"]:
         player_choice = input("Invalid input. Take away 1, 2, or 3 coins? ")
     player_choice = int(player_choice)
     current_number = current_number - player_choice
     print()
     if current_number <= 0:
-        print("You win!")
+        print("You win the bet!")
+        print("davy Jones: no how could I lose even with the extra help!")
+        print("So in the end Davy Jones was defeated and you got the legendary treasure")
+        print("The End")
+        quit()
 
 
 def Davvy_Jones():
     global current_number
-    if LEVEL == 1:
-        computer_choice = random.randint(1, 2)
-    elif LEVEL == 2:
-        # Computer cannot win from this position if opponent plays correctly.
-        if current_number % 3 == 0:
-            computer_choice = 1  # Arbitrary as can't force win. Could be 2 as well.
-        elif current_number % 3 == 1:
-            # Move 1 stone and make the opponent lose
-            computer_choice = 1
-        elif current_number % 3 == 2:
-            # Move 2 stones and make the opponent lose
-            computer_choice = 2
-    current_number = current_number - computer_choice
-    print(f"Davvy Jones's turn. Davvy Jones chooses {computer_choice}.")
+    player_choice = input("Davvy Jones, take away 1, 2, or 3 coins")
+    while player_choice not in ["1", "2", "3"]:
+        player_choice = input("Invalid input. Take away 1, 2, or 3 coins? ")
+    player_choice = int(player_choice)
+    current_number = current_number - player_choice
     print()
     if current_number <= 0:
-        print("Davvy Jones wins!")
-
+        print("Davy Jones Wins!")
+        print("Davy Jones: thank you player two now I can kill you " + name)
 
 def play_again():
     print()
-    return input("Would you like to play again (yes or no)? ").lower().startswith("y")
+    return input("Would you like to try again (yes or no)? ").lower().startswith("y")
 
 
 def main():
@@ -106,7 +105,7 @@ def main():
             lets_play_again = False
 
     print()
-    print("Goodbye!")
+    print("so long matty thanks for playing")
 
 
 if __name__ == "__main__":
